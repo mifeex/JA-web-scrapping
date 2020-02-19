@@ -1,4 +1,8 @@
 # JA-web-scrapping
+
+UPDATED:
+- Now, bot can click on reply button and in new page can lock question for user.
+
 JA web-scraping files
 
 Please install node.js from https://nodejs.org/en/ Choose the version 12.16.0
