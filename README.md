@@ -2,6 +2,7 @@
 
 UPDATED:
 - Now, bot can click on reply button and in new page can lock question for user.
+- Bot can automatically find the last questions and clicked on the reply button
 
 JA web-scraping files
 
