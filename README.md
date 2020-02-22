@@ -1,7 +1,7 @@
 # JA-web-scrapping
 
 UPDATED:
-- Now, bot can click on reply button and in new page can lock question for user.
+- Now bot can click on reply button and in new page can lock question for user.
 - Bot can automatically find the last questions and clicked on the reply button
 - The issue which happened if you have a Priority equal 0 fixed
 - Moreover now, script counting Priority more properly
@@ -17,4 +17,4 @@ Then install a npm http-server(in the command line enter: npm i http-server).
 
 And the last one ENTER node index into command line
 
-IF SOMETHING GO WRONG, please install some npm(in the command line enter: npm i npmName) such as: puppeteer, nodemon; 
+IF SOMETHING GO WRONG please install some npm(in the command line enter: npm i npmName) such as: puppeteer, nodemon; 
