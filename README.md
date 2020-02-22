@@ -3,8 +3,8 @@
 UPDATED:
 - Now, bot can click on reply button and in new page can lock question for user.
 - Bot can automatically find the last questions and clicked on the reply button
-- Moreover now, script counting Priority more properly
 - The issue which happened if you have a Priority equal 0 fixed
+- Moreover now, script counting Priority more properly
 
 JA web-scraping files
 
