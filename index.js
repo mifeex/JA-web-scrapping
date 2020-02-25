@@ -27,7 +27,7 @@ let scrape = async () => {
     async function puppeteerMutationListener(addedText, index) {
         console.log(`Added text: ${addedText}, ${index}`);
 
-        const link = await page.$(`body > div.question-list > div.bodyContainer > div.list-body-panel > div.questionlist > ul > div.scroll-questions-container > li:nth-child(${index + 2}) > div.question.open > div.question__info-and-hide > div.question__info-container > div > div.question__reply.chatbutton`);  
+        const link = await page.$(`body > div.question-list > div.bodyContainer > div.list-body-panel > div.questionlist > ul > div.scroll-questions-container > li:nth-child(${index + 1}) > div.question.open > div.question__info-and-hide > div.question__info-container > div > div.question__reply.chatbutton`);  
         const newPagePromise = new Promise(x => browser.once('targetcreated', target => x(target.page()))); 
 
         await link.click();
@@ -36,13 +36,15 @@ let scrape = async () => {
         await newPage.bringToFront();
 
         setTimeout(() => {
+            page.waitForSelector('body > div.chat-container > div.main > div > div.expert-reply-region > div > div.pro-response > div > div > div.post-status > div.question-actions.js-question-lock-region > div > p.relock-question.js-lock')
+
             newPage.click('body > div.chat-container > div.main > div > div.expert-reply-region > div > div.pro-response > div > div > div.post-status > div.question-actions.js-question-lock-region > div > p.relock-question.js-lock');
         }, 15000)     
     }
 
     await page.click('#modal-login > div.form > form > div.submit > button');    
 
-    await page.waitForSelector('body > div.question-list > div.bodyContainer > div.list-body-panel > div.questionlist > ul > div.scroll-questions-container');
+    await page.waitForSelector('body > div.question-list > div.bodyContainer > div.list-body-panel > div.questionlist > ul > div.scroll-questions-container > li:nth-child(1)');
 
     page.exposeFunction('puppeteerMutationListener', puppeteerMutationListener);
 
@@ -50,18 +52,12 @@ let scrape = async () => {
 
         const mutationObserver = new MutationObserver((mutationsList) => {
 
-            let counter = 0
-
-            if (Number(document.querySelector('#priorityCountMark').innerText) === 0) {
-                counter = 0
-            }
-
-            if (Number(document.querySelector('#priorityCountMark').innerText) !== 0) {
-                counter = document.getElementById('priorityCountMark').textContent
-            }
-
             for (const mutation of mutationsList) {
-                window.puppeteerMutationListener(mutation.addedNodes[0].textContent, counter);
+
+                if (mutation.addedNodes[0].classList.contains('open')) {
+                    window.puppeteerMutationListener(mutation.addedNodes[0].textContent, document.getElementById('priorityCountMark').textContent);
+                }
+                
             }
           });
 
@@ -77,4 +73,3 @@ let scrape = async () => {
 scrape().then((value) => {
     console.log(value); // Получилось!
 });
-
