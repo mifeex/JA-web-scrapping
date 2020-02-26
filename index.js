@@ -73,6 +73,3 @@ let scrape = async () => {
 scrape().then((value) => {
     console.log('You have a correct version!', value); // Получилось!
 });
-
-26 параграф
-4 д, е
