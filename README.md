@@ -5,6 +5,7 @@ UPDATED:
 - Bot can automatically find the last questions and clicked on the reply button
 - The issue which happened if you have a Priority equal 0 fixed
 - Moreover now, script counting Priority more properly
+- Now bot can check all new questions but he haven't speed to open this first
 
 JA web-scraping files
 
