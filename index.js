@@ -24,10 +24,10 @@ let scrape = async () => {
         }
     });
 
-    async function puppeteerMutationListener(addedText, index) {
-        console.log(`Added text: ${addedText}, ${index}`);
+    async function puppeteerMutationListener(addedText) {
+        console.log(`Added text: ${addedText}`);
 
-        const link = await page.$(`body > div.question-list > div.bodyContainer > div.list-body-panel > div.questionlist > ul > div.scroll-questions-container > li:nth-child(${index + 1}) > div.question.open > div.question__info-and-hide > div.question__info-container > div > div.question__reply.chatbutton`);  
+        const link = await page.$(`body > div.question-list > div.bodyContainer > div.list-body-panel > div.questionlist > ul > div.scroll-questions-container > li > div.question.open > div.question__info-and-hide > div.question__info-container > div > div.question__reply.chatbutton`);  
         const newPagePromise = new Promise(x => browser.once('targetcreated', target => x(target.page()))); 
 
         await link.click();
@@ -55,7 +55,7 @@ let scrape = async () => {
             for (const mutation of mutationsList) {
 
                 if (mutation.addedNodes[0].classList.contains('open')) {
-                    window.puppeteerMutationListener(mutation.addedNodes[0].textContent, document.getElementById('priorityCountMark').textContent);
+                    window.puppeteerMutationListener(mutation.addedNodes[0].textContent);
                 }
                 
             }
@@ -71,5 +71,5 @@ let scrape = async () => {
 };
 
 scrape().then((value) => {
-    console.log('You have a correct version!', value); // Получилось!
+    console.log('You still have a correct version!', value); // Получилось!
 });
