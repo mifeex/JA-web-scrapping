@@ -5,9 +5,17 @@ let scrape = async () => {
     const browser = await puppeteer.launch({
         headless: false,
         ignoreDefaultArgs: ['--mute-audio'],
+        args: [
+            '--window-size=1024,768',
+        ],
     });
     const page = await browser.newPage();
     await page.goto('https://professional-secure.justanswer.com/');
+
+    await page.setViewport({
+        width: 1024,
+        height: 768,
+    });
     // await page.setRequestInterception(true);
     // Код для скрапинг
 
