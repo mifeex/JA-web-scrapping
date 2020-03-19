@@ -42,8 +42,8 @@ let scrape = async () => {
         const newPage = await newPagePromise;
 
          await newPage.setViewport({
-            width: 1024,
-            height: 868,
+            width: 1280,
+            height: 1024,
         });
 
         setTimeout(() => {
