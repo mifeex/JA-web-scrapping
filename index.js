@@ -6,7 +6,7 @@ let scrape = async () => {
         headless: false,
         ignoreDefaultArgs: ['--mute-audio'],
         args: [
-            '--window-size=1024,768',
+            '--window-size=1280,1024',
         ],
     });
     const page = await browser.newPage();
@@ -16,7 +16,6 @@ let scrape = async () => {
         width: 1024,
         height: 768,
     });
- 
     // await page.setRequestInterception(true);
     // Код для скрапинг
 
@@ -44,11 +43,11 @@ let scrape = async () => {
 
         await newPage.bringToFront();
 
-        await newPage.setViewport({
-          width: 1024,
-          height: 768,
+         await newPage.setViewport({
+            width: 1024,
+            height: 868,
         });
-      
+
         setTimeout(() => {
             page.waitForSelector('body > div.chat-container > div.main > div > div.expert-reply-region > div > div.pro-response > div > div > div.post-status > div.question-actions.js-question-lock-region > div > p.relock-question.js-lock')
 
