@@ -13,8 +13,8 @@ let scrape = async () => {
     await page.goto('https://professional-secure.justanswer.com/');
 
     await page.setViewport({
-        width: 1024,
-        height: 768,
+        width: 1280,
+        height: 1024,
     });
     // await page.setRequestInterception(true);
     // Код для скрапинг
@@ -40,8 +40,6 @@ let scrape = async () => {
 
         await link.click();
         const newPage = await newPagePromise;
-
-        await newPage.bringToFront();
 
          await newPage.setViewport({
             width: 1024,
