@@ -16,6 +16,7 @@ let scrape = async () => {
         width: 1024,
         height: 768,
     });
+ 
     // await page.setRequestInterception(true);
     // Код для скрапинг
 
@@ -43,6 +44,11 @@ let scrape = async () => {
 
         await newPage.bringToFront();
 
+        await newPage.setViewport({
+          width: 1024,
+          height: 768,
+        });
+      
         setTimeout(() => {
             page.waitForSelector('body > div.chat-container > div.main > div > div.expert-reply-region > div > div.pro-response > div > div > div.post-status > div.question-actions.js-question-lock-region > div > p.relock-question.js-lock')
 
