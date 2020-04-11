@@ -23,8 +23,8 @@ let scrape = async () => {
         let username = document.querySelector('#UserName');
         let pass = document.querySelector('#Password');
 
-        pass.value = 'Cerby2017';
-        username.value = 'Remus2004';
+        pass.value = 'Password';
+        username.value = 'Login';
 
         return {
             username,
